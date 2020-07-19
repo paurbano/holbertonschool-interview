@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 '''Lockboxes '''
 
 
@@ -15,13 +15,3 @@ def canUnlockAll(boxes):
     if len(openboxes) == len(boxes):
         return True
     return False
-'''
-    myKeys = [0]
-    for key in myKeys:
-        for boxKey in boxes[key]:
-            if boxKey not in myKeys and boxKey < len(boxes):
-                myKeys.append(boxKey)
-    if len(myKeys) == len(boxes):
-        return True
-    return False
-'''
