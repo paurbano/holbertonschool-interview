@@ -175,4 +175,4 @@ carrie@ubuntu:0x01$ ./insert
 1024
 carrie@ubuntu:0x01$
 ```
-File: [0-insert_number.c], [lists.h]
+File: [0-insert_number.c](https://github.com/paurbano/holbertonschool-interview/blob/master/0x01-insert_in_sorted_linked_list/0-insert_number.c), [lists.h](https://github.com/paurbano/holbertonschool-interview/blob/master/0x01-insert_in_sorted_linked_list/lists.h)
