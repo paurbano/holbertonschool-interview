@@ -11,12 +11,14 @@ int is_palindrome(listint_t **head)
 	int palindrome[2048];
 	int i, j, num = 0;
 
+	/*if list is empty*/
 	if ((*head) == NULL || head == NULL)
 		return (1);
 
 	if ((*head)->next == NULL)
 		return (1);
 
+	/*transfer list to an array*/
 	while (*head != NULL)
 	{
 		palindrome[num] = (*head)->n;
@@ -24,6 +26,7 @@ int is_palindrome(listint_t **head)
 		*head = (*head)->next;
 	}
 
+	/*compare array positions*/
 	for (i = 0, j = num - 1 ; i < (num / 2); i++, j--)
 	{
 		if (palindrome[i] != palindrome[j])
