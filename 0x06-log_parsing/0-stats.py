@@ -6,12 +6,13 @@ from signal import signal, SIGINT
 
 def handler(signal_received, frame):
     # Handle any cleanup here
-    print(log_parsing)
+    # file_size = file_size + int(line_splited[len(line_splited)-1])
+    log_parsing = "File size: {}".format(file_size)
+    print(log_parsing, flush=True)
     for key, value in sorted(status.items()):
         if value > 0:
             print("{}: {}".format(key, value))
-    # sys.exit(0)
-
+    sys.exit(1)
 
 if __name__ == '__main__':
     signal(SIGINT, handler)
@@ -28,16 +29,16 @@ if __name__ == '__main__':
             status[str(key)] += 1
             # get size and increment its value
             file_size = file_size + int(line_splited[len(line_splited)-1])
+            # increment number of lines readed
+            countline += 1
             # every 10 lines print info
-            if countline % 10 == 0 and countline > 0:
+            if countline % 10 == 0 and countline != 0:
                 log_parsing = "File size: {}".format(file_size)
                 print(log_parsing, flush=True)
                 # print(status, flush=True)
                 for key, value in sorted(status.items()):
                     if value > 0:
                         print("{}: {}".format(key, value))
-            # increment number of lines readed
-            countline += 1
         sys.stdout.flush()
     except(BrokenPipeError, IOError):
         pass
