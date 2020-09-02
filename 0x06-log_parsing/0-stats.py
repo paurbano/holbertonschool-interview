@@ -1,20 +1,21 @@
 #!/usr/bin/python3
+'''log parsing '''
 
 import sys
 from signal import signal, SIGINT
 
 
-def handler(signal_received, frame):
-    # Handle any cleanup here
-    # file_size = file_size + int(line_splited[len(line_splited)-1])
-    log_parsing = "File size: {}".format(file_size)
-    print(log_parsing, flush=True)
-    for key, value in sorted(status.items()):
-        if value > 0:
-            print("{}: {}".format(key, value))
-    sys.exit(1)
-
 if __name__ == '__main__':
+    def handler(signal_received, frame):
+        # Handle any cleanup here
+        # file_size = file_size + int(line_splited[len(line_splited)-1])
+        log_parsing = "File size: {}".format(file_size)
+        print(log_parsing, flush=True)
+        for key, value in sorted(status.items()):
+            if value > 0:
+                print("{}: {}".format(key, value))
+        sys.exit(1)
+
     signal(SIGINT, handler)
     status = {"200": 0, "301": 0, "400": 0, "401": 0, "403": 0,
               "404": 0, "405": 0, "500": 0}
