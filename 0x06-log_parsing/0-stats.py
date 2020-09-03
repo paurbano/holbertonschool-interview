@@ -10,6 +10,7 @@ if __name__ == '__main__':
               "404": 0, "405": 0, "500": 0}
     file_size = 0
     log_parsing = ""
+    countline = 0
     '''
     def handler(signal_received, frame):
         # Handle any cleanup here
@@ -29,16 +30,16 @@ if __name__ == '__main__':
             if value > 0:
                 print("{}: {}".format(key, value))
 
-    countline = 0
     # signal(SIGINT, handler)
     try:
         for line in sys.stdin:
             line_splited = line.split(" ")
             # get code status
             key = int(line_splited[len(line_splited)-2])
-            status[str(key)] += 1
-            # get size and increment its value
-            file_size = file_size + int(line_splited[len(line_splited)-1])
+            if str(key) in status:
+                status[str(key)] += 1
+                # get size and increment its value
+                file_size = file_size + int(line_splited[len(line_splited)-1])
             # increment number of lines readed
             countline += 1
             # every 10 lines print info
