@@ -10,7 +10,7 @@ if __name__ == '__main__':
     file_size = 0
     log_parsing = ""
     countline = 0
-    
+
     def print_msg():
         log_parsing = "File size: {}".format(file_size)
         print(log_parsing)
