@@ -22,18 +22,19 @@ if __name__ == '__main__':
     try:
         for line in sys.stdin:
             line_splited = line.split()
-            # get code status
-            key = int(line_splited[len(line_splited)-2])
-            # if code exist
-            if str(key) in status:
-                status[str(key)] += 1
+            if len(line_splited) > 2:
+                # get code status
+                key = line_splited[len(line_splited)-2]
+                # if code exist
+                if str(key) in status:
+                    status[str(key)] += 1
                 # get size and increment its value
                 file_size = file_size + int(line_splited[len(line_splited)-1])
-            # increment number of lines readed
-            countline += 1
-            # every 10 lines print info
-            if countline % 10 == 0:
-                print_msg()
+                # increment number of lines readed
+                countline += 1
+                # every 10 lines print info
+                if countline % 10 == 0:
+                    print_msg()
     except KeyboardInterrupt:
         print_msg()
         raise
