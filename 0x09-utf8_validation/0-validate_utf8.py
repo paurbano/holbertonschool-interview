@@ -31,4 +31,6 @@ def validUTF8(data):
                 return False
         # decrease number of bytes for next number
         num_bytes -= 1
+    # all data are utf-8 encoding valid
+    # there aren´t missing bytes
     return num_bytes == 0
