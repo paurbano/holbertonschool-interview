@@ -31,4 +31,4 @@ def validUTF8(data):
                 return False
         # decrease number of bytes for next number
         num_bytes -= 1
-    return True
+    return num_bytes == 0
