@@ -86,6 +86,7 @@ def printSolution(board):
 
 if __name__ == "__main__":
     '''main'''
+    sys.setrecursionlimit(10000)
     if (len(sys.argv) == 2):
         # Validate data
         try:
