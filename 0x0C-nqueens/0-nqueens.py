@@ -4,70 +4,6 @@
 import sys
 
 
-def solve(n):
-    '''Prepare board and return a posible solution
-    args:
-        n: number of queens
-    Return
-        board with posible solution
-    '''
-    # prepare a board
-    board = [[0 for x in range(n)] for x in range(n)]
-    # set initial positions
-    return place_queen(board, 0, 0)
-
-
-def place_queen(board, row, column):
-    """place a queen that satisfies all the conditions
-    Args:
-        board:
-        row:
-        column:
-    """
-    # base case
-    if row > len(board)-1:
-        yield board
-    # check every column of the current row if its safe to place a queen
-    while column < len(board):
-        if is_safe(board, row, column):
-            # place a queen
-            board[row][column] = 1
-            # place the next queen with an updated board
-            for solution in place_queen(board, row+1, 0):
-                yield solution
-            return
-        else:
-            column += 1
-    # there is no column that satisfies the conditions. Backtrack
-    for c in range(len(board)):
-        if board[row-1][c] == 1:
-            # remove this queen
-            board[row-1][c] = 0
-            # go back to the previous row and start from the
-            # last unchecked column
-            for solution in place_queen(board, row-1, c+1):
-                yield solution
-
-
-def is_safe(board, row, column):
-    """ if no other queens threaten a queen at (row, queen) return True """
-    queens = []
-    for r in range(len(board)):
-        for c in range(len(board)):
-            if board[r][c] == 1:
-                queen = (r, c)
-                queens.append(queen)
-    for queen in queens:
-        qr, qc = queen
-        # check if the pos is in the same column or row
-        if row == qr or column == qc:
-            return False
-        # check diagonals
-        if (row + column) == (qr+qc) or (column-row) == (qc-qr):
-            return False
-    return True
-
-
 def printSolution(board):
     ''' Print Solutions
     Args:
@@ -84,9 +20,78 @@ def printSolution(board):
     print(pos_solu)
 
 
+def isSafe(board, row, col):
+    '''check if a queen can be placed on board[row][col]'''
+
+    # Check this row on left side
+    for i in range(col):
+        if (board[row][i]):
+            return False
+
+    # Check upper diagonal on left side
+    i = row
+    j = col
+    while i >= 0 and j >= 0:
+        if(board[i][j]):
+            return False
+        i -= 1
+        j -= 1
+
+    # Check lower diagonal on left side
+    i = row
+    j = col
+    while j >= 0 and i < len(board):
+        if(board[i][j]):
+            return False
+        i = i + 1
+        j = j - 1
+
+    return True
+
+
+def solveNQUtil(board, col):
+    ''' A recursive utility function to solve N Queen problem'''
+
+    # base case: If all queens are placed then return true
+    if (col == len(board)):
+        printSolution(board)
+        return True
+
+    ''' Consider this column and try placing
+    this queen in all rows one by one '''
+    res = False
+    for i in range(len(board)):
+        ''' Check if queen can be placed on
+        board[i][col] '''
+        if (isSafe(board, i, col)):
+
+            # Place this queen in board[i][col]
+            board[i][col] = 1
+
+            # Make result true if any placement
+            # is possible
+            res = solveNQUtil(board, col + 1) or res
+
+            ''' If placing queen in board[i][col]
+            doesn't lead to a solution, then
+            remove queen from board[i][col] '''
+            board[i][col] = 0  # BACKTRACK
+
+    return res
+
+
+def solveNQ(N):
+    '''Solves the N Queen problem using Backtracking.'''
+
+    board = [[0 for j in range(N)] for i in range(N)]
+
+    if (solveNQUtil(board, 0) is False):
+        exit(1)
+    return
+
+
 if __name__ == "__main__":
     '''main'''
-    sys.setrecursionlimit(10000)
     if (len(sys.argv) == 2):
         # Validate data
         try:
@@ -100,6 +105,4 @@ if __name__ == "__main__":
     else:
         print("Usage: nqueens N")
         exit(1)
-
-    for solution in solve(N):
-        printSolution(solution)
+    solveNQ(N)
