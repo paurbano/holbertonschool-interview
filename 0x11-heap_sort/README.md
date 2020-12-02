@@ -51,26 +51,6 @@ void print_array(const int *array, size_t size)
               <div class=" clearfix gap" id="task-3538">
 <span id="user_id" data-id="1283"></span>
 
-    <div class="student_task_controls">
-
-      <!-- button Done -->
-        <button class="student_task_done btn btn-default no" data-task-id="3538">
-          <span class="no"><i class="fa fa-square-o"></i></span>
-          <span class="yes"><i class="fa fa-check-square-o"></i></span>
-          <span class="pending"><i class="fa fa-spinner fa-pulse"></i></span>
-          Done<span class="no pending">?</span><span class="yes">!</span>
-        </button>
-        <br>
-
-      <!-- button Help! -->
-      <button class="users_done_for_task btn btn-default btn-default" data-task-id="3538" data-project-id="462" data-toggle="modal" data-target="#task-3538-users-done-modal">
-        Help
-      </button>
-      
-
-
-    </div>
-
   <h4 class="task">
     0. Heap sort
       <span class="alert alert-warning mandatory-optional">
