@@ -60,7 +60,7 @@ int validation(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		write(1, "Error\n", 6);
+		puts("Error");
 		exit(98);
 	}
 	for (i = 1 ; i < argc ; i++)
@@ -71,7 +71,7 @@ int validation(int argc, char *argv[])
 			{ ; }
 			else
 			{
-				write(1, "Error\n", 6);
+				puts("Error");
 				exit(98);
 			}
 		}
