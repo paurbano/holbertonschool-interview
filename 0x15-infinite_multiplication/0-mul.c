@@ -86,7 +86,7 @@ int validation(int argc, char *argv[])
 int main(int argc, char *argv[])
 {
 	int a[1000], b[1000], ans[2000] = {0};
-	int i, j, tmp;
+	int i, j, tmp, l1, l2;
 	char *s1, *s2;
 
 	if (*(argv[1]) == '0' || *(argv[2]) == '0')
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
 	validation(argc, argv);
 	s1 = argv[1];
 	s2 = argv[2];
-	int l1 = _strlen(s1), l2 = _strlen(s2);
+	l1 = _strlen(s1), l2 = _strlen(s2);
 
 	for (i = l1 - 1, j = 0; i >= 0; i--, j++)
 	{ a[j] = s1[i] - '0'; }
