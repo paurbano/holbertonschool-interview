@@ -5,7 +5,6 @@
  * Description: returns the length of a string.
  * Return: int.
  */
-
 int _strlen(char *s)
 {
 	int len = 0;
@@ -88,18 +87,17 @@ int main(int argc, char *argv[])
 {
 	int a[1000], b[1000], ans[2000] = {0};
 	int i, j, tmp;
-	char s1[1000], s2[1000];
+	char *s1, *s2;
 
 	if (*(argv[1]) == '0' || *(argv[2]) == '0')
+	{
 		_putchar('0');
-
+		_putchar('\n');
+		return (0);
+	}
 	validation(argc, argv);
-	for (i = 0; argv[1][i] != '\0'; i++)
-	{s1[i] = argv[1][i]; }
-	s1[i] = '\0';
-	for (i = 0; argv[2][i] != '\0'; i++)
-	{s2[i] = argv[2][i]; }
-	s2[i] = '\0';
+	s1 = argv[1];
+	s2 = argv[2];
 	int l1 = _strlen(s1), l2 = _strlen(s2);
 
 	for (i = l1 - 1, j = 0; i >= 0; i--, j++)
