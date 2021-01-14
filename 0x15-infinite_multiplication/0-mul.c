@@ -85,7 +85,7 @@ int validation(int argc, char *argv[])
  */
 int main(int argc, char *argv[])
 {
-	int a[1000], b[1000], ans[2000] = {0};
+	int a[3000], b[3000], ans[6000] = {0};
 	int i, j, tmp, l1, l2;
 	char *s1, *s2;
 
