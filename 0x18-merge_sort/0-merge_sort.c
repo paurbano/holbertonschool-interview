@@ -1,10 +1,10 @@
 #include "sort.h"
 /**
  * merge - merge two arrays
- *
  * @a: final array
- * @n: Number of elements in @array
- * @m: number of half elements in @array
+ * @n: Number of elements in array
+ * @m: number of half elements in array
+ * return - nothing
  */
 void merge(int *a, int n, int m)
 {
@@ -33,9 +33,9 @@ void merge(int *a, int n, int m)
 }
 /**
  * merge_sort - Order an array of integers
- *
  * @array: The array to be sorted
- * @size: Number of elements in @array
+ * @size: Number of elements in array
+ * return - nothing
  */
 void merge_sort(int *array, size_t size)
 {
