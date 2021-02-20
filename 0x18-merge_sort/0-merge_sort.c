@@ -1,50 +1,55 @@
 #include "sort.h"
 /**
- * merge - merge two arrays
- * @a: final array
- * @n: Number of elements in array
- * @m: number of half elements in array
- * return - nothing
- */
-void merge(int *a, int n, int m)
+ * merge - merges left and right arrays
+ * @array: pointer to array
+ * @size: size of the array
+ * @left: pointer to left array
+ * @right: pointer to right array
+ **/
+void merge(int *array, int *left, int *right, size_t size)
 {
-	int i, j, k;
-	int *x = malloc(n * sizeof(int));
+	int i = 0, j = 0, k = 0;
+	int size_l, size_r;
 
+	size_l = size / 2;
+	size_r = size - size_l;
 	printf("Merging...\n");
 	printf("[left]: ");
-	print_array(a, m);
+	print_array(left, size_l);
 	printf("[right]: ");
-	print_array(a + m, n - m);
-	for (i = 0, j = m, k = 0; k < n; k++)
+	print_array(right, size_r);
+	while (i < size_l && j < size_r)
 	{
-		x[k] = j == n      ? a[i++]
-				: i == m      ? a[j++]
-				: a[j] < a[i] ? a[j++]
-				:               a[i++];
+		if (left[i] < right[j])
+			array[k++] = left[i++];
+		else
+			array[k++] = right[j++];
 	}
-	for (i = 0; i < n; i++)
-	{
-		a[i] = x[i];
-	}
+	while (i < size_l)
+		array[k++] = left[i++];
+	while (j < size_r)
+		array[k++] = right[j++];
 	printf("[Done]: ");
-	print_array(a, n);
-	free(x);
+	print_array(array, size);
 }
 /**
- * merge_sort - Order an array of integers
- * @array: The array to be sorted
- * @size: Number of elements in array
- * return - nothing
- */
+ * merge_sort - merge sort in place on an array of integers
+ * @array: pointer to array
+ * @size: size of the array
+ **/
 void merge_sort(int *array, size_t size)
 {
-	int m;
+	size_t middle = 0, i;
+	int left[MAX], right[MAX];
 
-	if (size < 2)
+	if (array == NULL || size < 2)
 		return;
-	m = size / 2;
-	merge_sort(array, m);
-	merge_sort(array + m, size - m);
-	merge(array, size, m);
+	middle = size / 2;
+	for (i = 0; i < middle; i++)
+		left[i] = array[i];
+	for (i = middle; i < size; i++)
+		right[i - middle] = array[i];
+	merge_sort(left, middle);
+	merge_sort(right, size - middle);
+	merge(array, left, right, size);
 }
