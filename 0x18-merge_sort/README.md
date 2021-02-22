@@ -66,7 +66,7 @@ alexa@ubuntu-xenial:0x18-merge_sort$
   <!-- Progress vs Score -->
 
   <!-- Task Body -->
-  <p>Write a function that sorts an array of integers in ascending order using the <a href="/rltoken/ZvYviJcNKY01aZFOJNBHQg" title="Merge Sort" target="_blank">Merge Sort</a> algorithm:</p>
+  <p>Write a function that sorts an array of integers in ascending order using the <a href="https://en.wikipedia.org/wiki/Merge_sort#Top-down_implementation" title="Merge Sort" target="_blank">Merge Sort</a> algorithm:</p>
 
 <ul>
 <li>Prototype: <code>void merge_sort(int *array, size_t size);</code></li>
