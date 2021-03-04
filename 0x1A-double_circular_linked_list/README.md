@@ -18,6 +18,7 @@ typedef struct List
   struct List *next;
 } List;
 </code></pre>
+
 <h2 class="gap">Tasks</h2>
 <div data-role="task3659" data-position="5" id="task-num-0">
         <div class="panel panel-default task-card " id="task-3659">
@@ -27,32 +28,13 @@ typedef struct List
     <h3 class="panel-title">
       0. Add Nodes
     </h3>
-
-    <div>
-        <span class="label label-warning">
-          mandatory
-        </span>
-    </div>
   </div>
 
   <div class="panel-body">
     <span id="user_id" data-id="1283"></span>
 
-    
-
-    <!-- Progress vs Score -->
-      <div class="task_progress_score_bar" data-task-id="3659" data-correction-id="185485">
-        <div class="task_progress_bar" style="width: 0%;">
-          <div class="task_score_bar">
-          </div>
-        </div>
-        <div class="task_progress_score_text">
-          Score: <span class="task_score_value">0.00%</span> (<span class="task_progress_value">Checks completed: 0.00%</span>)
-        </div>
-      </div>
-
-    <!-- Task Body -->
-    <p>Create the source file <code>0-add_node.c</code> that contains the following functions:</p>
+<!-- Task Body -->
+<p>Create the source file <code>0-add_node.c</code> that contains the following functions:</p>
 
 <ul>
 <li>Add a new node  to <strong>the end</strong> of a double circular linked list:
