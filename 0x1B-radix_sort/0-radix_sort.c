@@ -23,8 +23,11 @@ int getMax(int *array, int n)
 */
 void countSort(int *array, int n, int exp)
 {
-	int output[n], i, count[10] = { 0 };
+	int *output, i, count[10] = { 0 };
 
+	output = malloc(sizeof(int) * n);
+	if (output == NULL)
+		return;
 	/*Store count of occurrences in count[]*/
 	for (i = 0; i < n; i++)
 		count[(array[i] / exp) % 10]++;
@@ -45,6 +48,7 @@ void countSort(int *array, int n, int exp)
 	/*contains sorted numbers according to current digit*/
 	for (i = 0; i < n; i++)
 		array[i] = output[i];
+	free(output);
 }
 /**
 * radix_sort - sort an array
