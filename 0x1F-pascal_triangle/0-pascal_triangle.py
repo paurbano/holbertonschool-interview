@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 '''pascal triangle'''
-from math import factorial
 
 
 def pascal_triangle(n):
@@ -9,9 +8,11 @@ def pascal_triangle(n):
     '''
     pascal = []
     if n > 0:
-        for i in range(n):
+        for i in range(1, n + 1):
             level = []
-            for j in range(i + 1):
-                level.append(factorial(i) // (factorial(j) * factorial(i - j)))
+            C = 1
+            for j in range(1, i + 1):
+                level.append(C)
+                C = C * (i - j) // j
             pascal.append(level)
     return pascal
