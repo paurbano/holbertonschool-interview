@@ -8,9 +8,10 @@ def pascal_triangle(n):
         triangle of n
     '''
     pascal = []
-    for i in range(n):
-        level = []
-        for j in range(i + 1):
-            level.append(factorial(i) // (factorial(j) * factorial(i - j)))
-        pascal.append(level)
+    if n > 0:
+        for i in range(n):
+            level = []
+            for j in range(i + 1):
+                level.append(factorial(i) // (factorial(j) * factorial(i - j)))
+            pascal.append(level)
     return pascal
